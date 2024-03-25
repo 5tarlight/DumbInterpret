@@ -2,7 +2,7 @@ package io.yeahx4.args;
 
 import java.io.Serializable;
 
-final public class ArgsPair<K, V> implements ArgsData, Serializable {
+public final class ArgsPair<K, V> implements ArgsData, Serializable {
     public final K key;
     public final V value;
 

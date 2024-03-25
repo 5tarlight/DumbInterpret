@@ -2,7 +2,7 @@ package io.yeahx4.args;
 
 import java.io.Serializable;
 
-final public class ArgsValue<T> implements ArgsData, Serializable {
+public final class ArgsValue<T> implements ArgsData, Serializable {
     public final T value;
 
     public ArgsValue(T value) {
