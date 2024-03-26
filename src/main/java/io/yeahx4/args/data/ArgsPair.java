@@ -1,15 +1,8 @@
-package io.yeahx4.args;
+package io.yeahx4.args.data;
 
 import java.io.Serializable;
 
-public final class ArgsPair<K, V> implements ArgsData, Serializable {
-    public final K key;
-    public final V value;
-
-    public ArgsPair(K key, V value) {
-        this.key = key;
-        this.value = value;
-    }
+public record ArgsPair<K, V>(K key, V value) implements ArgsData, Serializable {
 
     @Override
     public int hashCode() {

@@ -1,9 +1,11 @@
 package io.yeahx4;
 
+import io.yeahx4.args.parser.ArgsParser;
+
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Arrays.asList(args).forEach(System.out::println);
+        ArgsParser.parse(args).forEach(System.out::println);
     }
 }
