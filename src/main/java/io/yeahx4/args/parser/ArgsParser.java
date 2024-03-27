@@ -11,7 +11,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class ArgsParser {
     public static List<ArgsData> parse(String[] args) {
@@ -65,6 +67,30 @@ public final class ArgsParser {
         } catch (IOException io) {
             throw new TargetFileIoException(io);
         }
+    }
+
+    public static Map<String, String> getPair(List<ArgsData> args) {
+        Map<String, String> map = new HashMap<>(Map.of());
+
+        for (ArgsData arg : args) {
+            if (arg instanceof ArgsPair<?, ?> pair) {
+                map.put(pair.key().toString(), pair.value().toString());
+            }
+        }
+
+        return map;
+    }
+
+    public static boolean hasKey(List<ArgsData> args, String key) {
+        for (ArgsData arg : args) {
+            if (arg instanceof ArgsPair<?, ?> pair) {
+                if (pair.key().equals(key)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     private ArgsParser() {
