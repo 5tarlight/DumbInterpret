@@ -1,12 +1,15 @@
 package io.yeahx4.args.parser;
 
 import io.yeahx4.args.InvalidTargetNumberException;
+import io.yeahx4.args.TargetFileIoException;
 import io.yeahx4.args.data.ArgsData;
 import io.yeahx4.args.data.ArgsPair;
 import io.yeahx4.args.data.ArgsValue;
 import io.yeahx4.args.NullArgsValueException;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +56,15 @@ public final class ArgsParser {
             }
         }
 
-        return null;
+        throw new InvalidTargetNumberException(true);
+    }
+
+    public static List<String> readTargetFile(File target) {
+        try {
+            return Files.readAllLines(target.toPath());
+        } catch (IOException io) {
+            throw new TargetFileIoException(io);
+        }
     }
 
     private ArgsParser() {
