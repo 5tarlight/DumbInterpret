@@ -25,7 +25,25 @@ public abstract class AbstractLogger implements Logger {
         }
     }
 
+    public enum LogLevel {
+        ERROR(0),
+        WARN(1),
+        INFO(2),
+        DEBUG(3);
+
+        private final int level;
+
+        LogLevel(int level) {
+            this.level = level;
+        }
+
+        public int getLevel() {
+            return level;
+        }
+    }
+
     protected Class<?> target;
+    public static LogLevel level = LogLevel.INFO;
 
     public AbstractLogger(Class<?> target) {
         this.target = target;
@@ -60,9 +78,9 @@ public abstract class AbstractLogger implements Logger {
         }
 
         if (color) {
-            return String.format("[%s.%s]", ColorScheme.colorize(packageName, ColorScheme.CYAN), ColorScheme.colorize(className, ColorScheme.BOLD));
+            return String.format("%s.%s", ColorScheme.colorize(packageName, ColorScheme.CYAN), ColorScheme.colorize(className, ColorScheme.BOLD));
         } else {
-            return String.format("[%s.%s]", packageName, className);
+            return String.format("%s.%s", packageName, className);
         }
     }
 
