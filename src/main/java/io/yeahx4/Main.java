@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
         logger.info("Hello World!");
         logger.info("Runtime initiated");
+        logger.debug("Arguments: " + String.join(", ", args));
 
         Args argv = new Args(args);
         MainStarter.run(argv.readTargetContent());

@@ -7,21 +7,21 @@ public class StdLogger extends AbstractLogger {
 
     @Override
     public void debug(String message) {
-        System.out.println(super.getDebugMessage(message));
+        System.out.println(super.getDebugMessage(message, true));
     }
 
     @Override
     public void error(String message) {
-        System.err.println(super.getErrorMessage(message));
+        System.err.println(super.getErrorMessage(message, true));
     }
 
     @Override
     public void warn(String message) {
-        System.out.println(super.getWarnMessage(message));
+        System.out.println(super.getWarnMessage(message, true));
     }
 
     @Override
     public void info(String message) {
-        System.out.println(super.getInfoMessage(message));
+        System.out.println(super.getInfoMessage(message, true));
     }
 }
