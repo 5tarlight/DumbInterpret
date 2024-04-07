@@ -7,7 +7,7 @@ public class StdLogger extends AbstractLogger {
 
     @Override
     public void debug(String message) {
-        if (super.level.getLevel() >= LogLevel.DEBUG.getLevel())
+        if (level.getLevel() >= LogLevel.DEBUG.getLevel())
             System.out.println(super.getDebugMessage(message, true));
     }
 
@@ -18,13 +18,13 @@ public class StdLogger extends AbstractLogger {
 
     @Override
     public void warn(String message) {
-        if (super.level.getLevel() >= LogLevel.WARN.getLevel())
+        if (level.getLevel() >= LogLevel.WARN.getLevel())
             System.out.println(super.getWarnMessage(message, true));
     }
 
     @Override
     public void info(String message) {
-        if (super.level.getLevel() >= LogLevel.INFO.getLevel())
+        if (level.getLevel() >= LogLevel.INFO.getLevel())
             System.out.println(super.getInfoMessage(message, true));
     }
 }
